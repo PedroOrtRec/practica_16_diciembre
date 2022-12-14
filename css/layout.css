@@ -1,6 +1,8 @@
 body {
     color: white;
     background-image: linear-gradient(45deg, #252626, #383838);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: var(--fontFamily);
 }
 
@@ -17,19 +19,40 @@ h1,
 .navbar {
     display: flex;
     padding: 0.8rem;
-    background-color: #18181838;
+    background-color: #ffffff12;
 }
 
 .add>select {
+    /* all: unset;
+    background-color: white;
+    color: black; */
     margin: 0 0.8rem;
     min-width: 10rem;
 }
 
+.add>#text_add {
+    /* all: unset;
+    background-color: white;
+    color: black; */
+}
+
+.add>#add_button {
+    /* all: unset;
+    background-color: white;
+    color: black; */
+}
+
 .search>input {
+    /* all: unset;
+    background-color: white;
+    color: black; */
     margin: 0 1rem;
 }
 
 .search>select {
+    /* all: unset;
+    background-color: white;
+    color: black; */
     min-width: 10rem;
 }
 
@@ -46,7 +69,7 @@ footer {
     position: fixed;
     bottom: 0;
     padding: 1rem;
-    background-color: #18181838;
+    background-color: #383838;
     width: 100%;
     font-size: 1.5rem;
     border-top: 1px solid white;
@@ -73,10 +96,12 @@ footer {
 
 .one_task>button:hover {
     background-color: var(--deleteColorActive);
+    box-shadow: 1px 2px 3px black;
 }
 
 .one_task>button:active {
     transform: scale(0.95);
+    box-shadow: inset 1px 1px 4px black;
     transition: 0.05s;
 }
 
