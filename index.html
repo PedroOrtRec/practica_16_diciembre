@@ -12,24 +12,30 @@
 <body>
 
     <head>
+
         <nav class="navbar add">
-            <input type="text" placeholder="Nueva Tarea" id="text_add">
-            <select name="priority_add" id="priority_add">
-                <option value='none' selected>Prioridad</option>
-                <option value="urgent">Urgente</option>
-                <option value="daily">Diaria</option>
-                <option value="monthly">mensual</option>
-            </select>
-            <input type="submit" value="Añadir tarea" id="add_button">
+            <div class="container">
+                <input type="text" placeholder="Nueva Tarea" id="text_add">
+                <select name="priority_add" id="priority_add">
+                    <option value='none' selected>Prioridad</option>
+                    <option value="urgent">Urgente</option>
+                    <option value="daily">Diaria</option>
+                    <option value="monthly">mensual</option>
+                </select>
+                <input type="submit" value="Añadir tarea" id="add_button">
+            </div>
         </nav>
+
         <nav class="navbar search">
-            <select name="priority_search" id="priority_search">
-                <option value='all' selected>Buscar por prioridad</option>
-                <option value="urgent">Urgente</option>
-                <option value="daily">Diaria</option>
-                <option value="monthly">mensual</option>
-            </select>
-            <input type="text" placeholder="Buscar por nombre" id="text_search">
+            <div class="container">
+                <select name="priority_search" id="priority_search">
+                    <option value='all' selected>Buscar por prioridad</option>
+                    <option value="urgent">Urgente</option>
+                    <option value="daily">Diaria</option>
+                    <option value="monthly">mensual</option>
+                </select>
+                <input type="text" placeholder="Buscar por nombre" id="text_search">
+            </div>
         </nav>
     </head>
     <main>
@@ -42,31 +48,33 @@
             <section class="tasks">
                 <h2>Tasks</h2>
 
-                <!-- <article class="one_task urgent_task">
+                <article class="one_task urgent_task">
 
                     <h3>Hacer prácticas</h3>
 
-                    <button class="delete">Eliminar</button>
+                    <button class="delete">ELIMINAR</button>
                 </article>
 
                 <article class="one_task daily_task">
 
                     <h3>Repasar apuntes</h3>
 
-                    <button class="delete">Eliminar</button>
+                    <button class="delete">ELIMINAR</button>
                 </article>
 
                 <article class="one_task monthly_task">
 
                     <h3>Ampliar información</h3>
 
-                    <Button class="delete">Eliminar</Button>
-                </article> -->
+                    <Button class="delete">ELIMINAR</Button>
+                </article>
 
             </section>
         </div>
         <footer class="user_show">
-            <h2>APP TODO'S <span id="user"></span></h2>
+            <div class="container">
+                <h2>APP TODO'S <span id="user"></span></h2>
+            </div>
         </footer>
 
     </main>
