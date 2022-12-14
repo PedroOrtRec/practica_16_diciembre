@@ -1,9 +1,9 @@
 :root {
 
-    --urgentColor: rgb(194, 91, 2);
-    --dailyColor: rgb(205, 198, 2);
-    --monthlyColor: rgb(106, 191, 2);
+    --urgentColor: rgb(223, 105, 2);
+    --dailyColor: rgb(231, 223, 3);
+    --monthlyColor: rgb(126, 227, 3);
     --deleteColorActive: rgb(255, 0, 0);
-    --deleteColorInactive: rgba(255, 0, 0, 0.558);
+    --deleteColorInactive: #3838384d;
     --fontFamily: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

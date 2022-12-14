@@ -11,14 +11,18 @@ h1,
 }
 
 .alert {
-    height: 3.5rem;
+    height: 4rem;
 }
 
 .navbar {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     padding: 0.8rem;
     background-color: #18181838;
+}
+
+.container {
+    margin: 0 1rem;
 }
 
 .search {
@@ -41,7 +45,8 @@ footer {
 }
 
 
-.one_task>a {
+.one_task>button {
+    all: unset;
     display: inline-block;
     height: calc(100% - 6px);
     width: 10%;
@@ -50,7 +55,19 @@ footer {
     text-align: center;
     background-color: var(--deleteColorInactive);
     border-radius: 5px;
+    transition: 0.9s;
+    cursor: pointer;
 }
+
+.one_task>button:hover {
+    background-color: var(--deleteColorActive);
+}
+
+.one_task>button:active {
+    transform: scale(0.95);
+    transition: 0.05s;
+}
+
 
 .one_task>h3 {
 
@@ -61,27 +78,20 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 1rem;
     height: 5rem;
-    background-color: rgba(255, 255, 255, 0.226);
-    margin: 0.2rem 0;
     border-radius: 5px;
+    margin: 0.2rem;
 }
 
-.one_task>div {
-    height: calc(100% - 4px);
-    width: 85%;
-    border-radius: 5px;
-}
-
-.urgent_task>div {
+.urgent_task {
     background-color: var(--urgentColor);
 }
 
-.daily_task>div {
+.daily_task {
     background-color: var(--dailyColor);
 }
 
-.monthly_task>div {
+.monthly_task {
     background-color: var(--monthlyColor);
 }
