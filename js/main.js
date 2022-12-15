@@ -1,4 +1,4 @@
-const arrayTasks = new Array({
+const defaultArray = new Array({
     idTask: 0,
     title: 'Hacer prácticas',
     priority: 'urgent',
@@ -12,9 +12,6 @@ const arrayTasks = new Array({
     priority: 'monthly',
 });
 
-localStorage.setItem('arrayTasks', JSON.stringify(arrayTasks));
-
-
 let sectionTasks = document.querySelector('.tasks');
 let addButton = document.querySelector('#add_button');
 let textAdd = document.querySelector('#text_add');
@@ -24,19 +21,85 @@ let prioritySearch = document.querySelector('#priority_search');
 let id = 3;
 let spanUserName = document.querySelector('#user');
 
-let userName = prompt('Escriba su nombre de usuario');
-userName = userName.toUpperCase();
-spanUserName.innerText = userName;
 
 
 addButton.addEventListener('click', getValues);
+
+function startUser() {
+    let verificationUser = localStorage.getItem('userName16');
+    if (verificationUser === null) {
+        let userName = prompt('Escriba su nombre de usuario');
+        localStorage.setItem('userName16', userName);
+        userName = localStorage.getItem('userName16').toUpperCase();
+        spanUserName.innerText = userName;
+    } else {
+        userName = localStorage.getItem('userName16').toUpperCase();
+        spanUserName.innerText = userName;
+    }
+}
+
+function startTasks() {
+    let verificationArray = localStorage.getItem('arrayTasks16');
+    if (verificationArray === null) {
+        pushArrays(defaultArray);
+        printTasks(pullArrays(), sectionTasks);
+    } else {
+        printTasks(pullArrays(), sectionTasks);
+    }
+}
+
+function pushArrays(pArray) {
+    localStorage.setItem('arrayTasks16', JSON.stringify(pArray));
+}
+
+function pullArrays() {
+    let arrayTasks = JSON.parse(localStorage.getItem('arrayTasks16'));
+    return arrayTasks;
+}
+
+function printTasks(pArray, pDom) {
+    pDom.innerText = '';
+    pArray.forEach(task => printOneTask(task, task.idTask, pDom));
+}
+
+function printOneTask(pTask, pIdTask, pDom) {
+    let article = document.createElement('article');
+    article.className += 'one_task';
+    switch (pTask.priority) {
+        case 'urgent':
+            article.className += ' urgent_task';
+            break;
+        case 'daily':
+            article.className += ' daily_task';
+            break;
+        case 'monthly':
+            article.className += ' monthly_task';
+            break;
+    }
+    let h3 = document.createElement('h3');
+    h3.innerText = pTask.title;
+    let button = document.createElement('button');
+    button.innerText = 'Eliminar';
+    button.dataset.dataid = pIdTask;
+    button.addEventListener('click', removeTask);
+    pDom.appendChild(article);
+    article.appendChild(h3);
+    article.appendChild(button);
+}
+
+function removeTask(event) {
+    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+    let preDelArray = pullArrays();
+    console.log(preDelArray);
+    let posDelArray = preDelArray.filter((task) => task.idTask != event.target.dataset.dataid);
+    pushArrays(posDelArray);
+}
 
 function getValues() {
     let title = textAdd.value;
     let priority = priorityAdd.value;
     if (priority !== 'none') {
-        pushTask(title, priority);
-        // printTasks(arrayTasks, sectionTasks);
+        addTask(title, priority);
     }
     else {
         alert('Elige una prioridad para la tarea')
@@ -46,49 +109,18 @@ function getValues() {
 
 };
 
-function pushTask(pTitle, pPriority) {
-    let newTask = {
-        idTask: id,
-        title: pTitle,
-        priority: pPriority,
-    }
-    // localStorage.setItem('task' + '_' + id, JSON.stringify(newTask));
-    arrayTasks.push(newTask);
-    id = ++id;
-    localStorage.removeItem('arrayTasks');
-    localStorage.setItem('arrayTasks', JSON.stringify(arrayTasks));
+function addTask(pTitle, pPriority) {
+    let addArray = pullArrays();
+    let newId = addArray.length;
+    addArray.push({
+        'idTask': newId,
+        'title': pTitle,
+        'priority': pPriority
+    });
+    pushArrays(addArray);
+    printTasks(pullArrays(), sectionTasks);
 }
 
 
-
-
-// function printTasks(pArray, pDom) {
-//     pArray.forEach(task => printOneTask(task, pDom));
-// }
-
-// function printOneTask(pTask, pDom) {
-
-//     let article = document.createElement('article');
-//     article.className += 'one_task';
-//     switch (pTask.priority) {
-//         case 'urgent':
-//             article.className += ' urgent_task';
-//             break;
-//         case 'daily':
-//             article.className += ' daily_task';
-//             break;
-//         case 'monthly':
-//             article.className += ' monthly_task';
-//             break;
-//     }
-//     let h3 = document.createElement('h3');
-//     h3.innerText = pTask.title;
-//     let button = document.createElement('button');
-//     button.innerText = 'Eliminar';
-//     button.addEventListener('click', (event) => {
-//         event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-//     });
-//     pDom.appendChild(article);
-//     article.appendChild(h3);
-//     article.appendChild(button);
-// }
+startTasks();
+startUser();

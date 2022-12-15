@@ -1,9 +1,13 @@
 :root {
 
-    --urgentColorGradient: linear-gradient(90deg, rgb(174, 107, 48), rgb(250, 179, 117));
-    --dailyColorGradient: linear-gradient(90deg, rgb(150, 147, 67), rgb(248, 244, 110));
-    --monthlyColorGradient: linear-gradient(90deg, rgb(99, 132, 58), rgb(186, 248, 111));
-    --deleteColorActive: #76231f;
-    --deleteColorInactive: #3838384d;
+    --urgentColor: #e85d04;
+    --dailyColor: #ffba08;
+    --monthlyColor: #9fa167;
+    --deleteColor: #D00000;
+    --backColor: #032b43;
+    --backColor2: #3f88c5;
+    --backColor3: #215a84;
+    --backColor4: #0b4d53;
+    --backColor5: #136f63;
     --fontFamily: Arial, Helvetica, sans-serif;
 }

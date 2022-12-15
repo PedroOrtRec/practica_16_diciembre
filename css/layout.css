@@ -1,6 +1,6 @@
 body {
     color: white;
-    background-image: linear-gradient(45deg, #7EA687, #002A2E);
+    background-color: var(--backColor);
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: var(--fontFamily);
@@ -87,7 +87,7 @@ footer {
     text-decoration: none;
     color: white;
     text-align: center;
-    background-color: var(--deleteColorActive);
+    background-color: var(--deleteColor);
     border-radius: 5px;
     transition: 0.5s;
     cursor: pointer;
@@ -119,13 +119,13 @@ footer {
 }
 
 .urgent_task {
-    background-image: var(--urgentColorGradient);
+    background-color: var(--urgentColor);
 }
 
 .daily_task {
-    background-image: var(--dailyColorGradient);
+    background-color: var(--dailyColor);
 }
 
 .monthly_task {
-    background-image: var(--monthlyColorGradient);
+    background-color: var(--monthlyColor);
 }
