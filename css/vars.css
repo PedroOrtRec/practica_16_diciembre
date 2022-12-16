@@ -5,10 +5,12 @@
     --monthlyColor: #ffba08;
     --deleteColor: #D00000;
     --backColor: #032b43;
+    --borderColor: #cfae38;
+
+
     --backColor2: #3f88c5;
     --backColor3: #215a84;
-    --backColor4: #0b4d53;
+    --backColor: #0b4d53;
     --backColor5: #136f63;
-    --otherColor: #9fa167;
-    --otherColor2: #cfae38;
+    --otherColor2: #9fa167;
 }

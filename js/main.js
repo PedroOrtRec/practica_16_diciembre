@@ -1,3 +1,5 @@
+//DATOS DEL ARRAY POR DEFECTO
+
 const defaultArray = new Array({
     idTask: 0,
     title: 'Hacer prácticas',
@@ -12,6 +14,8 @@ const defaultArray = new Array({
     priority: 'monthly',
 });
 
+//SELECTORES
+
 let sectionTasks = document.querySelector('.tasks');
 let sectionAlerts = document.querySelector('.alerts')
 let addButton = document.querySelector('#add_button');
@@ -22,13 +26,13 @@ let prioritySearch = document.querySelector('#priority_search');
 let id = 3;
 let spanUserName = document.querySelector('#user');
 
-
+//EVENTOS
 
 addButton.addEventListener('click', getValues);
-
 textSearch.addEventListener('keydown', filterByName);
-
 prioritySearch.addEventListener('change', filterByPriority)
+
+//FUNCIONES DE FILTROS
 
 function filterByName(event) {
     if (event.keyCode === 13) {
@@ -47,6 +51,8 @@ function filterByPriority(event) {
         printTasks(pullArrays(), sectionTasks);
     }
 }
+
+//FUNCIONES DE INICIO DE LA APLICACIÓN
 
 function startUser() {
     let verificationUser = localStorage.getItem('userName16');
@@ -71,6 +77,23 @@ function startTasks() {
     }
 }
 
+//FUNCION DE CAPTURA DE VALORES
+
+function getValues() {
+    let title = textAdd.value;
+    let priority = priorityAdd.value;
+    if (priority !== 'none') {
+        addTask(title, priority);
+        textAdd.value = '';
+        priorityAdd.value = 'none';
+    }
+    else {
+        alert('Elige una prioridad para la tarea')
+    };
+};
+
+//FUNCIONES DE MODIFICACIÓN DE ARRAYS EN EL LOCALSTORAGE
+
 function pushArrays(pArray) {
     localStorage.setItem('arrayTasks16', JSON.stringify(pArray));
 }
@@ -79,6 +102,20 @@ function pullArrays() {
     let arrayTasks = JSON.parse(localStorage.getItem('arrayTasks16'));
     return arrayTasks;
 }
+
+function addTask(pTitle, pPriority) {
+    let addArray = pullArrays();
+    let newId = addArray.length;
+    addArray.push({
+        'idTask': newId,
+        'title': pTitle,
+        'priority': pPriority
+    });
+    pushArrays(addArray);
+    printTasks(pullArrays(), sectionTasks);
+}
+
+//FUNCIONES DE PINTADO DE TAREAS
 
 function printTasks(pArray, pDom) {
     pDom.innerText = '';
@@ -111,6 +148,8 @@ function printOneTask(pTask, pIdTask, pDom) {
     article.appendChild(button);
 }
 
+//FUNCION DE BORRADO DE TAREAS
+
 function removeTask(event) {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode);
     let preDelArray = pullArrays();
@@ -119,49 +158,7 @@ function removeTask(event) {
     pushArrays(posDelArray);
 }
 
-function getValues() {
-    let title = textAdd.value;
-    let priority = priorityAdd.value;
-    if (priority !== 'none') {
-        addTask(title, priority);
-        textAdd.value = '';
-        priorityAdd.value = 'none';
-    }
-    else {
-        alert('Elige una prioridad para la tarea')
-    };
-};
-
-function addTask(pTitle, pPriority) {
-    let addArray = pullArrays();
-    let newId = addArray.length;
-    addArray.push({
-        'idTask': newId,
-        'title': pTitle,
-        'priority': pPriority
-    });
-    pushArrays(addArray);
-    printTasks(pullArrays(), sectionTasks);
-    printAlerts(sectionAlerts);
-}
-
-function printAlerts(pDom) {
-    let article = document.createElement('article');
-    let h4 = document.createElement('h4');
-    let icon = document.createElement('i');
-    icon.className = 'fa-solid fa-check'
-    h4.className += 'alert_text';
-    h4.innerText = 'Se ha añadido una nueva tarea';
-    article.className += 'alert_pop';
-    // showAlert();
-    // hideAlert();
-    pDom.appendChild(article);
-    article.appendChild(icon);
-    article.appendChild(h4);
-}
-
-// setTimeout(() => {})
-
+//INICIALIZACIÓN DE LA APP
 
 startTasks();
 startUser();
