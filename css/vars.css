@@ -1,8 +1,8 @@
 :root {
 
     --urgentColor: #e85d04;
-    --dailyColor: #ffba08;
-    --monthlyColor: #9fa167;
+    --dailyColor: #f48c06;
+    --monthlyColor: #ffba08;
     --deleteColor: #D00000;
     --backColor: #032b43;
     --backColor2: #3f88c5;
@@ -10,4 +10,6 @@
     --backColor4: #0b4d53;
     --backColor5: #136f63;
     --fontFamily: Arial, Helvetica, sans-serif;
+    --otherColor: #9fa167;
+    --otherColor2: #cfae38;
 }

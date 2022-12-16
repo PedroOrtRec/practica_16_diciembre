@@ -1,6 +1,6 @@
 body {
     color: white;
-    background-color: var(--backColor);
+    background-image: linear-gradient(180deg, var(--backColor), var(--backColor2) 95%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: var(--fontFamily);
@@ -12,55 +12,48 @@ h1,
     display: none;
 }
 
-.alert {
+.alerts {
     height: 4rem;
 }
 
 .navbar {
     display: flex;
     padding: 0.8rem;
+    justify-content: space-around;
+    background-color: var(--backColor4);
 }
 
 .add>select {
-    /* all: unset;
-    background-color: white;
-    color: black; */
+
     margin: 0 0.8rem;
     min-width: 10rem;
 }
 
-.add>#text_add {
-    /* all: unset;
-    background-color: white;
-    color: black; */
-}
+.add>#text_add {}
 
-.add>#add_button {
-    /* all: unset;
-    background-color: white;
-    color: black; */
-}
+.add>#add_button {}
 
-.search>input {
-    /* all: unset;
-    background-color: white;
-    color: black; */
-    margin: 0 1rem;
-}
+.search>input {}
 
 .search>select {
-    /* all: unset;
-    background-color: white;
-    color: black; */
     min-width: 10rem;
 }
 
 .container {
-    margin: 0 15rem;
+    margin: 0 1rem;
+}
+
+.add {
+    /* border-left: 2px solid var(--backColor5);
+    border-right: 2px solid var(--backColor5); */
 }
 
 .search {
-    border-bottom: 1px solid white;
+    border-bottom: 5px solid var(--backColor5);
+    /* border-left: 2px solid var(--backColor5);
+    border-right: 2px solid var(--backColor5);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; */
 }
 
 
@@ -116,6 +109,12 @@ footer {
     height: 5rem;
     border-radius: 5px;
     margin: 0.5rem;
+    transition: 1s;
+}
+
+.one_task:hover {
+    transform: scale(1.05);
+    transition: 3s;
 }
 
 .urgent_task {
@@ -128,4 +127,16 @@ footer {
 
 .monthly_task {
     background-color: var(--monthlyColor);
+}
+
+.alert_text {
+    color: white;
+}
+
+.alert_pop {
+    height: 5rem;
+}
+
+.smaller_task {
+    transform: scale(0.5);
 }
