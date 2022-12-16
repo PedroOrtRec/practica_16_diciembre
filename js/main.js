@@ -148,16 +148,20 @@ function addTask(pTitle, pPriority) {
 function printAlerts(pDom) {
     let article = document.createElement('article');
     let h4 = document.createElement('h4');
-    h4.className += 'alert_text'
-    h4.innerText = 'Se ha añadido una nueva tarea'
-    article.className += 'alert_pop'
+    let icon = document.createElement('i');
+    icon.className = 'fa-solid fa-check'
+    h4.className += 'alert_text';
+    h4.innerText = 'Se ha añadido una nueva tarea';
+    article.className += 'alert_pop';
+    // showAlert();
+    // hideAlert();
     pDom.appendChild(article);
+    article.appendChild(icon);
     article.appendChild(h4);
 }
 
-// function smallerTask(event) {
-//     event.target.parentNode.className += ' smaller_task';
-// }
+// setTimeout(() => {})
+
 
 startTasks();
 startUser();
